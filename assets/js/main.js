@@ -33,7 +33,7 @@ $('#registration_suffix').on('change paste keyup', function(){
                     let marca_para_jp = element.MARCA.substring(0,2)+"-"+element.MARCA.substring(2,5)
         
                     let html = `<div class="box"> \
-                                <h1>${element.MARCA}</h1> \
+                                <h1>${marca_para_jp}</h1> \
                                 <div class="links">
                                 <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${element.MARCA}" target="_blank">RAB</a> \
                                 <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
