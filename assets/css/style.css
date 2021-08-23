@@ -39,7 +39,11 @@ input:focus{
     background-color: #5db0ce;
     padding: 100px 0;
     text-align: center;
-    
+
+    background-image: url('../img/path410.png');
+    background-repeat: no-repeat;
+    background-position: center bottom; 
+    background-size:1000px;
 }
 
 .box {
@@ -66,11 +70,14 @@ h1 {
     input {
         width: 60%;
     }
-
-    .box {
     
+    .box {
+        
         display:block;
         margin-right: 15px;
+    }
+    .top {
+        background-size:100%;
     }
 }
 
