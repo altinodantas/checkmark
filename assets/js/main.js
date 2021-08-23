@@ -30,6 +30,9 @@ $('#registration_sufix').on('change paste keyup', function(){
             
                 });
             });
+
+            $(document.activeElement).filter(':input:focus').blur();
+
     } else{
 
         $('.result').html("<p>Informe uma matrícula sem o prefixo</p>")
