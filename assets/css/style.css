@@ -86,4 +86,8 @@ h1 {
     input {
         width: 300px;
     }
+
+    .top {
+        background-size:800px;
+    }
 }
