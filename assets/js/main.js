@@ -4,6 +4,11 @@
 
 */
 
+$(document).ready(function(){
+    $("#registration_suffix").focus()
+})
+
+
 $('#registration_suffix').on('change paste keyup', function(){
 
     if (document.getElementById("registration_suffix").value.length == 3) {
