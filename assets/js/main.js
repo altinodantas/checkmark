@@ -1,6 +1,12 @@
-$('#registration_sufix').on('change paste keyup', function(){
+/* data from 
+    
+    https://sistemas.anac.gov.br/dadosabertos/Aeronaves/RAB/dados_aeronaves.json 
 
-    if (document.getElementById("registration_sufix").value.length == 3) {
+*/
+
+$('#registration_suffix').on('change paste keyup', function(){
+
+    if (document.getElementById("registration_suffix").value.length == 3) {
 
         fetch("dados.json")
             .then(response => response.json())
@@ -15,12 +21,17 @@ $('#registration_sufix').on('change paste keyup', function(){
                 result.forEach(element => {
 
                     let modelo      = element.DSMODELO?element.DSMODELO:"-"
-                    let ano  = element.NRANOFABRICACAO?element.NRANOFABRICACAO:"-"
+                    let ano         = element.NRANOFABRICACAO?element.NRANOFABRICACAO:"-"
                     let fabricante  = element.NMFABRICANTE?element.NMFABRICANTE:"-"
-                    let operador  = element.NMOPERADOR?element.NMOPERADOR:"-"
+                    let operador    = element.NMOPERADOR?element.NMOPERADOR:"-"
+
+                    let marca_para_jp = element.MARCA.substring(0,2)+"-"+element.MARCA.substring(2,5)
         
                     let html = `<div class="box"> \
                                 <h1>${element.MARCA}</h1> \
+                                <div class="links">
+                                <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${element.MARCA}" target="_blank">RAB</a> \
+                                <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
                                 <span>${modelo}</span> (${ano}) <br/>\
                                 ${fabricante} <br/>\  
                                 ${operador} 
@@ -41,10 +52,7 @@ $('#registration_sufix').on('change paste keyup', function(){
 
 })
 
-
-
-
 function haveRegistration(item){
     let marca = item.MARCA.substring(2,5)
-    return document.getElementById("registration_sufix").value  == marca
+    return document.getElementById("registration_suffix").value  == marca
 }

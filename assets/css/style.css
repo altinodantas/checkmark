@@ -11,6 +11,25 @@ p {
     text-align: center;
 }
 
+a {
+    background-color: #5db0ce;
+    color: #FFF;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+a:hover {
+    
+    background-color: #4da5c5;
+}
+
+.links {
+    position: relative;
+    float: right;
+    margin-top: -30px;
+}
+
 body {
     background-color: #FFF;
     color: #626c74;
@@ -54,6 +73,7 @@ input:focus{
     margin: 15px 0 0 15px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 4px;
+    min-width: 200px;
 }
 
 .box span {
@@ -64,6 +84,11 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 
+.last_update {
+    font-size: 12px;
+    text-align: center;
+    margin: 20px;
+}
 
 /* For Mobile */
 @media screen and (max-width: 540px) {
