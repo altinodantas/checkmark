@@ -51,7 +51,7 @@ $('#registration_suffix').on('change paste keyup', function(){
 
     } else{
 
-        $('.result').html("<p>Informe uma matrícula sem o prefixo</p>")
+        $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: PJN)</p>")
 
     }
 
