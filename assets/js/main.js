@@ -13,7 +13,7 @@ $('#registration_suffix').on('change paste keyup', function(){
 
     if (document.getElementById("registration_suffix").value.length == 3) {
 
-        fetch("dados.json")
+        fetch("data/dados.json")
             .then(response => response.json())
             .then(function(data) {
         
