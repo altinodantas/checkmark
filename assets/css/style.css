@@ -31,13 +31,19 @@ a:hover {
     margin-top: -30px;
 }
 
+.load {
+
+    padding: 20px;
+    text-align: center;
+}
+
 body {
     background-color: #FFF;
     color: #626c74;
     font-family: 'Roboto', sans-serif;
 }
 
-input {
+.top input, .top select{
     
     line-height: 2em;
     border: 4px solid rgba(0,0,0,0.2);
@@ -47,11 +53,22 @@ input {
     font-size:2em;
     font-weight: bold;
     color: #626c74;
+
+    margin-bottom: 10px;
     
 }
 
-input:focus{
+.top select {
+    font-size: 1em;
+    padding: 10px;
+}
+
+input:focus,select:focus{
     outline: none;
+}
+
+.guest_box input{
+    width: 50px;
 }
 
 .top {
@@ -113,6 +130,40 @@ h1 {
     font-size: 12px;
     text-align: center;
     margin: 20px;
+}
+
+.check_box, .guest_box {
+    width:100%;
+    /*float: left;*/
+}
+
+#try_button {
+    padding: 10px;
+    border: 4px solid rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    background-color: rgba(4, 73, 119, 0.938);
+    border-radius: 10px;
+    color: #FFF;
+}
+#try_button:hover{
+    background-color: rgb(4, 73, 119);
+}
+
+
+#lock{
+    padding: 5px;
+    position: absolute;
+    margin: 15px;
+    top: 10px;
+    right: 10px;
+    border: solid 1px #238dad;
+    background-color: #3ea1c0;
+    color: #10708d;
+    border-radius: 10px;
+}
+
+#lock:hover {
+    background-color: rgba(58, 161, 192, 0.753);
 }
 
 /* For Mobile */
