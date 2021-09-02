@@ -119,8 +119,10 @@ $("#try_button").on("click",function(){
                     })
                 }
 
+                console.time("test-list")
                 result.forEach(element => {
 
+                    
                     list_distances.push({
                         "matricula":    element.MARCA, 
                         "distance":     hammingDistance(masked_mark,element.MARCA), 
@@ -132,42 +134,50 @@ $("#try_button").on("click",function(){
                     })
                     
                 });
+                console.timeEnd("test-list")
                 
+                console.time("test-list-sort")
                 list_distances.sort(function(a,b){
                     return a.distance - b.distance
                 })
+                console.timeEnd("test-list-sort")
 
                                 
                 let best_distance = list_distances[0].distance
 
+                console.time("test-filter")
                 let list_to_print = list_distances.filter(function(element) {
                     return element.distance == best_distance
                 })
-                                
+                console.timeEnd("test-filter")
+                
                 $(".load").hide()
-
+                
+                console.time("test-plot")
+                let html = ""
                 if(list_to_print[0].distance <= number_empty_letter){
-
-                    list_to_print.forEach(element => {
-        
-                        let marca_para_jp = element.matricula.substring(0,2)+"-"+element.matricula.substring(2,5)
-            
-                        let html = `<div class="box"> \
-                                    <h1>${marca_para_jp}</h1> \
-                                    <div class="links">
-                                    <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${element.MARCA}" target="_blank">RAB</a> \
-                                    <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
-                                    <span>${element.modelo}</span> (${element.ano}) <br/>\
-                                    ${element.fabricante} <br/>\  
-                                    ${element.operador} 
-                                    </div>`
+                    
+                    for(i = 0; i < list_to_print.length; i++) {
                         
-                        $('.result').append(html)
-                    })
+                        let marca_para_jp = list_to_print[i].matricula.substring(0,2)+"-"+list_to_print[i].matricula.substring(2,5)
+                        
+                        html += `<div class="box"> \
+                        <h1>${marca_para_jp}</h1> \
+                        <div class="links">
+                        <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${list_to_print[i].MARCA}" target="_blank">RAB</a> \
+                        <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
+                        <span>${list_to_print[i].modelo}</span> (${list_to_print[i].ano}) <br/>\
+                        ${list_to_print[i].fabricante} <br/>\  
+                        ${list_to_print[i].operador} 
+                        </div>`
+                        
+                    }
+                    $('.result').append(html)
                 } else {
                     $('.result').append("<p>Não foi encontrada matrícula com os dados informadas</p>")
                 }
-
+                
+                console.timeEnd("test-plot")
             });
 })
 
@@ -201,7 +211,7 @@ $('#mode').on('click',function() {
 
                 // $("#registration_letter_2").focus();
                 document.getElementById("registration_letter_2").focus()
-                $('.result').html("<p>Informe as letras que souber da matrícula (Ex.: P*PU*)</p>");
+                $('.result').html("<p>Informe algumas letras da matrícula (Ex.: P*PU*)</p>");
 
             }else {
 
