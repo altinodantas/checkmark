@@ -75,13 +75,19 @@ input:focus,select:focus{
 .top {
     
     background-color: #5db0ce;
-    padding: 100px 0;
+    padding: 80px 0;
     text-align: center;
     
     background-image: url('../img/path410.png');
     background-repeat: no-repeat;
     background-position: center bottom; 
     background-size:1000px;
+    min-height: 220px;
+}
+
+#registration_suffix {
+
+    margin-top: 50px;
 }
 
 .box {
@@ -128,7 +134,7 @@ h1 {
 }
 
 .modal p{
-    text-align: left;
+    text-align: justify;
     font-size:medium;
 }
 

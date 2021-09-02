@@ -77,7 +77,7 @@ $('#registration_suffix').on('change paste keyup', function(){
 
     } else{
 
-        $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: PJN)</p>")
+        $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: <b>PJN</b>)</p>")
 
     }
 
@@ -199,16 +199,14 @@ $('#mode').on('click',function() {
                     $(this).val("");
                 })
 
-                // $("#registration_letter_2").focus();
-                document.getElementById("registration_letter_2").focus()
-                $('.result').html("<p>Informe algumas letras da matrícula (Ex.: P*PU*)</p>");
+                $("#registration_letter_2").focus();
+                $('.result').html("<p>Informe algumas letras da matrícula (Ex.: <b>P*PU*</b>)</p>");
 
             }else {
 
                 $("#registration_suffix").val("");
-                // $("#registration_suffix").focus();
-                document.getElementById("registration_suffix").focus()
-                $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: PJN)</p>");
+                $("#registration_suffix").focus();
+                $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: <b>PJN</b>)</p>");
 
             }
         }
