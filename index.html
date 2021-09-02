@@ -19,44 +19,47 @@
 <body>
 
   <div class="top">
-
-    <div class="controls">      
-      <i class="fas fa-cog" id="mode"></i>
-      <a href="#ex1" rel="modal:open"><i class="fas fa-question-circle" id="help"></i></a>
-    </div>
-
-    <div class="check_box">
-      <input type="text" maxlength="3" minlength="3" id="registration_suffix"
-        onkeyup="this.value = this.value.toUpperCase()" autocomplete="off" />
-    </div>
-
-    <div class="guest_box">
-      <div>
-        <input class="mobile-verify" type="text" maxlength="1" minlength="1" id="registration_letter_1" value="P"
-          placeholder="*" onkeyup="this.value = this.value.toUpperCase()" autocomplete="off" readonly=true />
-        <input class="mobile-verify pass" onfocus="this.value=''" type="text" maxlength="1" minlength="1"
-          id="registration_letter_2" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
-          autocomplete="off" /> -
-        <input class="mobile-verify pass" onfocus="this.value=''" ype="text" maxlength="1" minlength="1"
-          id="registration_letter_3" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
-          autocomplete="off" />
-        <input class="mobile-verify pass" onfocus="this.value=''" type="text" maxlength="1" minlength="1"
-          id="registration_letter_4" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
-          autocomplete="off" />
-        <input class="mobile-verify pass" onfocus="this.value=''" type="text" maxlength="1" minlength="1"
-          id="registration_letter_5" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
-          autocomplete="off" />
+    <div class="top-inner">
+      <div class="controls">      
+        <i class="fas fa-cog" id="mode"></i>
+        <a href="#ex1" rel="modal:open"><i class="fas fa-question-circle" id="help"></i></a>
+      </div>
+  
+      <div class="check_box">
+        <input type="text" maxlength="3" minlength="3" id="registration_suffix"
+          onkeyup="this.value = this.value.toUpperCase()" autocomplete="off" />
+      </div>
+  
+      <div class="guest_box">
+        <div>
+          <input class="mobile-verify" type="text" maxlength="1" minlength="1" id="registration_letter_1" value="P"
+            placeholder="*" onkeyup="this.value = this.value.toUpperCase()" autocomplete="off" readonly=true />
+          <input class="mobile-verify pass" onfocus="this.value=''" type="text" maxlength="1" minlength="1"
+            id="registration_letter_2" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
+            autocomplete="off" /> -
+          <input class="mobile-verify pass" onfocus="this.value=''" ype="text" maxlength="1" minlength="1"
+            id="registration_letter_3" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
+            autocomplete="off" />
+          <input class="mobile-verify pass" onfocus="this.value=''" type="text" maxlength="1" minlength="1"
+            id="registration_letter_4" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
+            autocomplete="off" />
+          <input class="mobile-verify pass" onfocus="this.value=''" type="text" maxlength="1" minlength="1"
+            id="registration_letter_5" value="" placeholder="*" onkeyup="this.value = this.value.toUpperCase()"
+            autocomplete="off" />
+        </div>
+  
+        <div style="width: 100%;text-align: center;">
+          <select id="fabricante" class="select-css">
+            <option value="">Selecione o fabricante</option>
+          </select>
+        </div>
+  
+        <button id="try_button">Buscar</button>
+  
       </div>
 
-      <div style="width: 100%;text-align: center;">
-        <select id="fabricante" class="select-css">
-          <option value="">Selecione o fabricante</option>
-        </select>
-      </div>
-
-      <button id="try_button">Buscar</button>
-
     </div>
+
   </div>
 
   <div class="load">
