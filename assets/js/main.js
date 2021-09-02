@@ -91,7 +91,7 @@ function haveRegistration(item){
 
 $("#try_button").on("click",function(){
 
-    $(".load").fadeIn()
+    $(".load").show()
     $('.result').html("")
 
     let letter_1 = $("#registration_letter_1").val()?$("#registration_letter_1").val():"*"
