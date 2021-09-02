@@ -37,7 +37,6 @@ $(document).ready(function(){
 
 })
 
-
 $('#registration_suffix').on('change paste keyup', function(){
 
     if (document.getElementById("registration_suffix").value.length == 3) {
@@ -188,37 +187,35 @@ const hammingDistance = (str1 = '', str2 = '') => {
     return dist;
 };
 
-
-
 // control search mode 
 $('.guest_box').hide();
-$('#lock').on('click',
-    function() {
+$('#lock').on('click',function() {
         
-        $('.guest_box, .check_box').toggle(100, function(){
-            if($(this).is(":visible")){
-                if($(this).attr('class') === 'guest_box'){
+    $('.guest_box, .check_box').toggle(100, function(){
+        if($(this).is(":visible")){
+            if($(this).attr('class') === 'guest_box'){
 
-                    $(".pass").each(function(){
-                        $(this).val("");
-                    })
+                $(".pass").each(function(){
+                    $(this).val("");
+                })
 
-                    $("#registration_letter_2").focus();
-                    $('.result').html("<p>Informe as letras que souber da matrícula (Ex.: P*PU*)</p>");
+                // $("#registration_letter_2").focus();
+                document.getElementById("registration_letter_2").focus()
+                $('.result').html("<p>Informe as letras que souber da matrícula (Ex.: P*PU*)</p>");
 
-                }else {
+            }else {
 
-                    $("#registration_suffix").val("");
-                    $("#registration_suffix").focus();
-                    $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: PJN)</p>");
+                $("#registration_suffix").val("");
+                // $("#registration_suffix").focus();
+                document.getElementById("registration_suffix").focus()
+                $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: PJN)</p>");
 
-                }
             }
-            
-        });
+        }
         
-    }
-);
+    });
+        
+});
 
 $('input.mobile-verify.pass').on('keyup', function() {
     if ($(this).val()) {
