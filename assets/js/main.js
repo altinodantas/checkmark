@@ -189,7 +189,7 @@ const hammingDistance = (str1 = '', str2 = '') => {
 
 // control search mode 
 $('.guest_box').hide();
-$('#lock').on('click',function() {
+$('#mode').on('click',function() {
         
     $('.guest_box, .check_box').toggle(100, function(){
         if($(this).is(":visible")){
