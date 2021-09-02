@@ -144,6 +144,7 @@ h1 {
     background-color: rgba(4, 73, 119, 0.938);
     border-radius: 10px;
     color: #FFF;
+    font-size: 1.2em;
 }
 #try_button:hover{
     background-color: rgb(4, 73, 119);
@@ -189,36 +190,6 @@ h1 {
     100% { transform: rotate(360deg); }
   }
 
-
-/* For Mobile */
-@media screen and (max-width: 540px) {
-    input {
-        width: 60%;
-    }
-    
-    .box {
-        
-        display:block;
-        margin-right: 15px;
-    }
-    .top {
-        background-size:100%;
-    }
-}
-
-/* For Tablets */
-@media screen and (min-width: 540px) and (max-width: 780px) {
-    input {
-        width: 300px;
-    }
-
-    .top {
-        background-size:800px;
-    }
-}
-
-
-
 .select-css {
 	font-size: 16px;
 	font-family: sans-serif;
@@ -256,4 +227,31 @@ h1 {
 }
 .select-css option {
 	font-weight:normal;
+}
+
+/* For Mobile */
+@media screen and (max-width: 540px) {
+    input {
+        width: 60%;
+    }
+    
+    .box {
+        
+        display:block;
+        margin-right: 15px;
+    }
+    .top {
+        background-size:100%;
+    }
+}
+
+/* For Tablets */
+@media screen and (min-width: 540px) and (max-width: 780px) {
+    input {
+        width: 300px;
+    }
+
+    .top {
+        background-size:800px;
+    }
 }

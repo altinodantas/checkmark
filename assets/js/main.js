@@ -120,7 +120,6 @@ $("#try_button").on("click",function(){
                     })
                 }
 
-
                 result.forEach(element => {
 
                     list_distances.push({
@@ -132,14 +131,13 @@ $("#try_button").on("click",function(){
                         "ano":          element.NRANOFABRICACAO?element.NRANOFABRICACAO:"-",
                         "fabricante":   element.NMFABRICANTE?element.NMFABRICANTE:"-"
                     })
-
-                    list_distances.sort(function(a,b){
-                        return a.distance - b.distance
-                    })
-
-
                     
                 });
+                
+                list_distances.sort(function(a,b){
+                    return a.distance - b.distance
+                })
+
                                 
                 let best_distance = list_distances[0].distance
 
@@ -168,7 +166,7 @@ $("#try_button").on("click",function(){
                         $('.result').append(html)
                     })
                 } else {
-                    $('.result').append("<p>Não foi encontrada matrícula com as letras informadas</p>")
+                    $('.result').append("<p>Não foi encontrada matrícula com os dados informadas</p>")
                 }
 
             });
@@ -192,12 +190,32 @@ const hammingDistance = (str1 = '', str2 = '') => {
 
 
 
-
+// control search mode 
 $('.guest_box').hide();
 $('#lock').on('click',
     function() {
         
-        $('.guest_box, .check_box').toggle(100);
+        $('.guest_box, .check_box').toggle(100, function(){
+            if($(this).is(":visible")){
+                if($(this).attr('class') === 'guest_box'){
+
+                    $(".pass").each(function(){
+                        $(this).val("");
+                    })
+
+                    $("#registration_letter_2").focus();
+                    $('.result').html("<p>Informe as letras que souber da matrícula (Ex.: P*PU*)</p>");
+
+                }else {
+
+                    $("#registration_suffix").val("");
+                    $("#registration_suffix").focus();
+                    $('.result').html("<p>Informe uma matrícula sem o prefixo (Ex.: PJN)</p>");
+
+                }
+            }
+            
+        });
         
     }
 );
