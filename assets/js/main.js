@@ -119,9 +119,7 @@ $("#try_button").on("click",function(){
                     })
                 }
 
-                console.time("test-list")
                 result.forEach(element => {
-
                     
                     list_distances.push({
                         "matricula":    element.MARCA, 
@@ -134,30 +132,23 @@ $("#try_button").on("click",function(){
                     })
                     
                 });
-                console.timeEnd("test-list")
                 
-                console.time("test-list-sort")
                 list_distances.sort(function(a,b){
                     return a.distance - b.distance
                 })
-                console.timeEnd("test-list-sort")
 
-                                
                 let best_distance = list_distances[0].distance
 
-                console.time("test-filter")
                 let list_to_print = list_distances.filter(function(element) {
                     return element.distance == best_distance
                 })
-                console.timeEnd("test-filter")
                 
                 $(".load").hide()
                 
-                console.time("test-plot")
                 let html = ""
                 if(list_to_print[0].distance <= number_empty_letter){
                     
-                    for(i = 0; i < list_to_print.length; i++) {
+                    for(i = 0; i < Math.min(100,list_to_print.length); i++) {
                         
                         let marca_para_jp = list_to_print[i].matricula.substring(0,2)+"-"+list_to_print[i].matricula.substring(2,5)
                         
@@ -177,7 +168,6 @@ $("#try_button").on("click",function(){
                     $('.result').append("<p>Não foi encontrada matrícula com os dados informadas</p>")
                 }
                 
-                console.timeEnd("test-plot")
             });
 })
 
