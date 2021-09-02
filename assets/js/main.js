@@ -201,3 +201,9 @@ $('#lock').on('click',
         
     }
 );
+
+$('input.mobile-verify.pass').on('keyup', function() {
+    if ($(this).val()) {
+        $(this).next().focus();
+    }
+});
