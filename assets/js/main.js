@@ -155,7 +155,7 @@ $("#try_button").on("click",function(){
                         html += `<div class="box"> \
                         <h1>${marca_para_jp}</h1> \
                         <div class="links">
-                        <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${list_to_print[i].MARCA}" target="_blank">RAB</a> \
+                        <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${list_to_print[i].matricula}" target="_blank">RAB</a> \
                         <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
                         <span>${list_to_print[i].modelo}</span> (${list_to_print[i].ano}) <br/>\
                         ${list_to_print[i].fabricante} <br/>\  
