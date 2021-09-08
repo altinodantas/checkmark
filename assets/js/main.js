@@ -46,6 +46,8 @@ $('#registration_suffix').on('change paste keyup', function(){
             .then(function(data) {
         
                 const result = data.filter(haveRegistration)
+
+                console.log(result)
         
                 $('.result').html("")
         
@@ -55,20 +57,21 @@ $('#registration_suffix').on('change paste keyup', function(){
                     let ano         = element.NRANOFABRICACAO?element.NRANOFABRICACAO:"-"
                     let fabricante  = element.NMFABRICANTE?element.NMFABRICANTE:"-"
                     let operador    = element.NMOPERADOR?element.NMOPERADOR:"-"
+                    let marca       = element.MARCA
+                    let gravame     = element.DSGRAVAME
+                    let estado      = element.SGUF
+                    let categoria   = element.CDCATEGORIA
+                    let marca_para_jp   = element.MARCA.substring(0,2)+"-"+element.MARCA.substring(2,5)
+                    let proprietario    = element.PROPRIETARIO     
 
-                    let marca_para_jp = element.MARCA.substring(0,2)+"-"+element.MARCA.substring(2,5)
-        
-                    let html = `<div class="box"> \
-                                <h1>${marca_para_jp}</h1> \
-                                <div class="links">
-                                <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${element.MARCA}" target="_blank">RAB</a> \
-                                <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
-                                <span>${modelo}</span> (${ano}) <br/>\
-                                ${fabricante} <br/>\  
-                                ${operador} 
-                                </div>`
-                    
-                    $('.result').append(html)
+                    if (gravame === "RESERVADAS AS MARCAS"){
+                        
+                        $('.result').append(getHTMLReserved(marca,marca_para_jp,estado,categoria,proprietario));
+
+                    } else {
+
+                        $('.result').append(getHTMLDefault(marca,marca_para_jp,fabricante,ano,modelo,operador))
+                    }
             
                 });
             });
@@ -128,7 +131,10 @@ $("#try_button").on("click",function(){
                         "modelo":       element.DSMODELO?element.DSMODELO:"-",
                         "operador":     element.NMOPERADOR?element.NMOPERADOR:"-",
                         "ano":          element.NRANOFABRICACAO?element.NRANOFABRICACAO:"-",
-                        "fabricante":   element.NMFABRICANTE?element.NMFABRICANTE:"-"
+                        "proprietario": element.PROPRIETARIO?element.PROPRIETARIO:"-",
+                        "fabricante":   element.NMFABRICANTE?element.NMFABRICANTE:"-",
+                        "estado":       element.SGUF?element.SGUF:"-",
+                        "gravame":      element.DSGRAVAME?element.DSGRAVAME:"-"
                     })
                     
                 });
@@ -151,16 +157,22 @@ $("#try_button").on("click",function(){
                     for(i = 0; i < Math.min(100,list_to_print.length); i++) {
                         
                         let marca_para_jp = list_to_print[i].matricula.substring(0,2)+"-"+list_to_print[i].matricula.substring(2,5)
-                        
-                        html += `<div class="box"> \
-                        <h1>${marca_para_jp}</h1> \
-                        <div class="links">
-                        <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${list_to_print[i].matricula}" target="_blank">RAB</a> \
-                        <a href="https://www.jetphotos.com/photo/keyword/${marca_para_jp}" target="_blank">JP</a> </div> \
-                        <span>${list_to_print[i].modelo}</span> (${list_to_print[i].ano}) <br/>\
-                        ${list_to_print[i].fabricante} <br/>\  
-                        ${list_to_print[i].operador} 
-                        </div>`
+
+                        if(list_to_print[i].gravame === "RESERVADAS AS MARCAS"){
+                            html += getHTMLReserved(list_to_print[i].matricula,
+                                                    marca_para_jp,
+                                                    list_to_print[i].estado,
+                                                    list_to_print[i].categoria,
+                                                    list_to_print[i].proprietario
+                                                    )
+                        } else {
+                            html += getHTMLDefault(list_to_print[i].matricula,
+                                                    marca_para_jp,
+                                                    list_to_print[i].fabricante,
+                                                    list_to_print[i].ano,
+                                                    list_to_print[i].modelo,
+                                                    list_to_print[i].operador)
+                        }
                         
                     }
                     $('.result').append(html)
@@ -220,3 +232,33 @@ $('input.mobile-verify.pass').on('keyup', function() {
         $(this).next().focus();
     }
 });
+
+function getHTMLDefault(marca, marca_sep, fabricante, ano, modelo, operador){
+
+    let html = `<div class="box"> \
+                <h1>${marca_sep}</h1> \
+                <div class="links">
+                <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${marca}" target="_blank">RAB</a> \
+                <a href="https://www.jetphotos.com/photo/keyword/${marca_sep}" target="_blank">JP</a> </div> \
+                <span>${modelo}</span> (${ano}) <br/>\
+                ${fabricante} <br/>\  
+                ${operador} 
+                </div>`
+
+    return html
+}
+
+function getHTMLReserved(marca, marca_sep, estado, categoria, proprietario){
+
+    let html = `<div class="box reserved"> \
+                <h1>${marca_sep}</h1> \
+                <div class="links">
+                <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_print.asp?nf=${marca}" target="_blank">RAB</a> \
+                <a href="https://www.jetphotos.com/photo/keyword/${marca_sep}" target="_blank">JP</a> </div> \
+                <span>Reserva de Marca</span> (${estado}) <br/> \
+                Categoria ${categoria} <br/>\
+                ${proprietario} 
+                </div>`
+
+    return html
+}

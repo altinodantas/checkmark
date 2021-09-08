@@ -25,6 +25,20 @@ p {
     background-color: #4da5c5;
 }
 
+.result .reserved a {
+    background-color: #616c73;
+    color: rgb(255, 255, 255);
+    padding: 3px 4px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.result .reserved a:hover {
+    
+    background-color: #4a5358;
+}
+
 
 .links {
     position: relative;
@@ -103,13 +117,15 @@ input:focus,select:focus{
     position: relative;
     display: inline-block;
     padding: 20px;
-    border: solid 1px #5db0ce;
     margin: 20px 0 0 20px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 4px;
     min-width: 200px;
-    
     box-shadow: 2px 2px 2px #20202017;
+}
+
+.reserved {
+    background-color: #23d5abb4;
 }
 
 .box::before {
