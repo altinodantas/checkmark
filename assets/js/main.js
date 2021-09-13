@@ -47,9 +47,9 @@ $('#registration_suffix').on('change paste keyup', function(){
         
                 const result = data.filter(haveRegistration)
 
-                console.log(result)
-        
                 $('.result').html("")
+
+                console.log(result)
         
                 result.forEach(element => {
 
@@ -62,7 +62,8 @@ $('#registration_suffix').on('change paste keyup', function(){
                     let estado      = element.SGUF
                     let categoria   = element.CDCATEGORIA
                     let marca_para_jp   = element.MARCA.substring(0,2)+"-"+element.MARCA.substring(2,5)
-                    let proprietario    = element.PROPRIETARIO     
+                    let proprietario    = element.PROPRIETARIO   
+                    let motivocanc  = element.DSMOTIVOCANC  
 
                     if (gravame === "RESERVADAS AS MARCAS"){
                         
@@ -70,7 +71,7 @@ $('#registration_suffix').on('change paste keyup', function(){
 
                     } else {
 
-                        $('.result').append(getHTMLDefault(marca,marca_para_jp,fabricante,ano,modelo,operador))
+                        $('.result').append(getHTMLDefault(marca,marca_para_jp,fabricante,ano,modelo,operador, motivocanc))
                     }
             
                 });
@@ -134,7 +135,8 @@ $("#try_button").on("click",function(){
                         "proprietario": element.PROPRIETARIO?element.PROPRIETARIO:"-",
                         "fabricante":   element.NMFABRICANTE?element.NMFABRICANTE:"-",
                         "estado":       element.SGUF?element.SGUF:"-",
-                        "gravame":      element.DSGRAVAME?element.DSGRAVAME:"-"
+                        "gravame":      element.DSGRAVAME?element.DSGRAVAME:"-",
+                        "cancelamento": element.DSMOTIVOCANC
                     })
                     
                 });
@@ -171,7 +173,8 @@ $("#try_button").on("click",function(){
                                                     list_to_print[i].fabricante,
                                                     list_to_print[i].ano,
                                                     list_to_print[i].modelo,
-                                                    list_to_print[i].operador)
+                                                    list_to_print[i].operador,
+                                                    list_to_print[i].cancelamento)
                         }
                         
                     }
@@ -233,10 +236,18 @@ $('input.mobile-verify.pass').on('keyup', function() {
     }
 });
 
-function getHTMLDefault(marca, marca_sep, fabricante, ano, modelo, operador){
+function getHTMLDefault(marca, marca_sep, fabricante, ano, modelo, operador, cancelamento){
+
+    let marcatexto = ``
+
+    if(!cancelamento){
+        marcatexto = `<h1 class="ativo">${marca_sep}</h1>`
+    } else {
+        marcatexto = `<h1 class="inativo">${marca_sep}</h1>`
+    }
 
     let html = `<div class="box"> \
-                <h1>${marca_sep}</h1> \
+                ${marcatexto} \
                 <div class="links">
                 <a href="https://sistemas.anac.gov.br/aeronaves/cons_rab_resposta.asp?textMarca=${marca}" target="_blank">RAB</a> \
                 <a href="https://www.jetphotos.com/photo/keyword/${marca_sep}" target="_blank">JP</a> </div> \
