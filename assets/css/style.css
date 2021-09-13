@@ -175,6 +175,7 @@ h1.inativo::before {
 .modal p{
     text-align: left;
     font-size:medium;
+    padding: 10px 0 0 0;
 }
 
 li {
@@ -300,6 +301,11 @@ li {
     }
     .top-inner {
         background-size:100%;
+    }
+
+    .modal p {
+        margin: 0;
+        font-size: 12px;
     }
 }
 
