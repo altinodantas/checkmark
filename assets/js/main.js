@@ -5,6 +5,15 @@
 */
 
 $(document).ready(function(){
+
+    var lastMod = null;
+    fetch("update_date.txt")
+        .then((response) => response.text())
+        .then((text)=>{
+            $(".last_update span").html(text)
+        })
+
+
     $("#registration_suffix").focus()
 
     $(".load").hide()
@@ -63,7 +72,8 @@ $('#registration_suffix').on('change paste keyup', function(){
                     let categoria   = element.CDCATEGORIA
                     let marca_para_jp   = element.MARCA.substring(0,2)+"-"+element.MARCA.substring(2,5)
                     let proprietario    = element.PROPRIETARIO   
-                    let motivocanc  = element.DSMOTIVOCANC  
+                    let motivocanc  = element.DSMOTIVOCANC
+                    let numero_serie = element.NRSERIE
 
                     if (gravame === "RESERVADAS AS MARCAS"){
                         
