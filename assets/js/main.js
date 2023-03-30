@@ -47,6 +47,7 @@ $(document).ready(function(){
 })
 
 $('#registration_suffix').on('change paste keyup', function(){
+    
 
     if (document.getElementById("registration_suffix").value.length == 3) {
 
@@ -56,6 +57,7 @@ $('#registration_suffix').on('change paste keyup', function(){
         
                 const result = data.filter(haveRegistration)
 
+                $(".load").show()
                 $('.result').html("")
 
                 console.log(result)
@@ -85,6 +87,13 @@ $('#registration_suffix').on('change paste keyup', function(){
                     }
             
                 });
+                
+                $(".load").hide()
+                
+                if (result.length == 0){
+                    $('.result').html("<p>Matrícula inexistente.</p>")
+                }
+                
             });
 
             $(document.activeElement).filter(':input:focus').blur();
